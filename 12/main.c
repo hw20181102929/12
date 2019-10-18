@@ -1,15 +1,57 @@
-//
-//  main.c
-//  12
-//
-//  Created by s20181102929 on 2019/10/18.
-//  Copyright © 2019 s20181102929. All rights reserved.
-//
-
 #include <stdio.h>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
-    return 0;
+#include <stdlib.h>
+struct LNode
+{
+    int data;
+    struct LNode *next;
+};
+struct LNode * Create()
+{
+    struct LNode *head,*ptr,*p;
+    head=(struct LNode *)malloc(sizeof(struct LNode ));
+    ptr=(struct LNode *)malloc(sizeof(struct LNode ));
+    p=(struct LNode *)malloc(sizeof(struct LNode ));
+    ptr->next=p->next=NULL;
+    int n;
+    scanf("%d",&n);
+    int i=0;
+    while(n!=-1)
+    {
+        ptr->data=n;
+        ptr->next=p->next;
+        p->next=ptr;
+        if(i==0)
+        {
+            head=ptr;
+            i++;
+        }
+        p=p->next;
+        ptr=(struct LNode *)malloc(sizeof(struct LNode ));
+        scanf("%d",&n);
+    }
+    return head;
 }
+int main()
+{
+    struct LNode *ptr,*p;
+    p=ptr=Create();
+    int n;
+    scanf("%d",&n);
+    int i;
+    for(i=0;i<=1;i++)
+    {
+        while(ptr!=NULL)
+        {
+            printf("%d ",ptr->data);
+            ptr=ptr->next;
+        }
+        printf("%d",i);
+    ptr=p;
+    }
+    while(ptr!=NULL)
+    {
+        printf("%d ",ptr->data);
+        ptr=ptr->next;
+    }
+}
+
